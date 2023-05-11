@@ -1,0 +1,37 @@
+-------------------------------------------------------------------------------
+Test set: com.adem.pc.ChatApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 13, Failures: 0, Errors: 7, Skipped: 0, Time elapsed: 28.995 s <<< FAILURE! - in com.adem.pc.ChatApplicationTests
+testfindByMarque  Time elapsed: 1.109 s  <<< ERROR!
+org.springframework.dao.InvalidDataAccessApiUsageException: org.hibernate.TransientObjectException: object references an unsaved transient instance - save the transient instance before flushing: com.adem.pc.entities.Marque; nested exception is java.lang.IllegalStateException: org.hibernate.TransientObjectException: object references an unsaved transient instance - save the transient instance before flushing: com.adem.pc.entities.Marque
+	at com.adem.pc.ChatApplicationTests.testfindByMarque(ChatApplicationTests.java:102)
+Caused by: java.lang.IllegalStateException: org.hibernate.TransientObjectException: object references an unsaved transient instance - save the transient instance before flushing: com.adem.pc.entities.Marque
+	at com.adem.pc.ChatApplicationTests.testfindByMarque(ChatApplicationTests.java:102)
+Caused by: org.hibernate.TransientObjectException: object references an unsaved transient instance - save the transient instance before flushing: com.adem.pc.entities.Marque
+	at com.adem.pc.ChatApplicationTests.testfindByMarque(ChatApplicationTests.java:102)
+
+testListerTousPcs  Time elapsed: 0.115 s  <<< ERROR!
+org.hibernate.LazyInitializationException: failed to lazily initialize a collection of role: com.adem.pc.entities.Marque.pcs, could not initialize proxy - no Session
+	at com.adem.pc.ChatApplicationTests.testListerTousPcs(ChatApplicationTests.java:52)
+
+findByMarqueIdMar  Time elapsed: 0.067 s  <<< ERROR!
+org.hibernate.LazyInitializationException: failed to lazily initialize a collection of role: com.adem.pc.entities.Marque.pcs, could not initialize proxy - no Session
+	at com.adem.pc.ChatApplicationTests.findByMarqueIdMar(ChatApplicationTests.java:115)
+
+testFindBynomChatContains  Time elapsed: 0.04 s  <<< ERROR!
+org.hibernate.LazyInitializationException: failed to lazily initialize a collection of role: com.adem.pc.entities.Marque.pcs, could not initialize proxy - no Session
+	at com.adem.pc.ChatApplicationTests.lambda$testFindBynomChatContains$0(ChatApplicationTests.java:62)
+	at com.adem.pc.ChatApplicationTests.testFindBynomChatContains(ChatApplicationTests.java:62)
+
+testTrierPcsNomsprix  Time elapsed: 0.021 s  <<< ERROR!
+org.hibernate.LazyInitializationException: failed to lazily initialize a collection of role: com.adem.pc.entities.Marque.pcs, could not initialize proxy - no Session
+	at com.adem.pc.ChatApplicationTests.testTrierPcsNomsprix(ChatApplicationTests.java:133)
+
+testFindPc  Time elapsed: 0.021 s  <<< ERROR!
+org.hibernate.LazyInitializationException: failed to lazily initialize a collection of role: com.adem.pc.entities.Marque.pcs, could not initialize proxy - no Session
+	at com.adem.pc.ChatApplicationTests.testFindPc(ChatApplicationTests.java:32)
+
+testUpdatePc  Time elapsed: 0.019 s  <<< ERROR!
+java.util.NoSuchElementException: No value present
+	at com.adem.pc.ChatApplicationTests.testUpdatePc(ChatApplicationTests.java:37)
+

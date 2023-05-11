@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+ layout:decorator="template"> 
+<link rel="stylesheet" type="text/css"
+href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css" />
+<head>
+<meta charset="utf-8">
+<title>Ajout des Ordinateurs</title>
+</head>
+<body>
+<divbody>
+<div th:replace="template">
+</div>
+<div class="container mt-5">
+<div class="card">
+ <div class="card-header">
+ Modifier les ordinateurs
+ </div>
+ <div class="card-body">
+<form th:action="@{saveFreelancer}" method="post">
+<div class="form-group">
+<label class="control-label" hidden>ID  :</label>
+ <input type="hidden" name="idPc" class="form-control"
+th:value="${pc.idPc}" />
+</div>
+<div class="form-group">
+<label class="control-label">Nom Pc:</label>
+<input type="text" name="nomPc" class="form-control"
+th:value="${pc.nomPc}" />
+<span th:errors= ${pc.nomPc} class="text-danger">
+</span>
+</div>
+<div class="form-group">
+<label class="control-label">Prix :</label>
+ <input type="text" name="Prix" class="form-control"
+th:value="${pc.prix}" />
+ <span th:errors=${pc.prix} class="text-danger">
+</span>
+</div>
+<div class="form-group">
+<label class="control-label">date Ajout :</label>
+<input type="date" name="dateAjout" class="form-control" 
+th:value="${pc.dateAjout}"/>
+<span th:errors=${chat.dateAjout} class="text-danger">
+</span>
+</div>
+<div>
+<button type="submit" class="btn btn-primary">Valider</button>
+</div>
+</form>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorator="template">
+<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css" />
+<head>
+<meta charset="utf-8">
+<title>Ajout des Pc</title>
+</head>
+<body>
+<divbody>
+<div th:replace="template">
+</div>
+<div class="container mt-5">
+<div class="card">
+<div class="card-header" th:if="${mode=='new'}"> Ajout des Pc </div>
+ <div class="card-header" th:if="${mode=='edit'}">Modification des Pc
+</div>
+
+<div class="card-body">
+ <form th:action="@{savePc}" method="post">
+ <div class="form-group">
+<label class="control-label" hidden>ID Pc :</label>
+ <input type="hidden" name="idPc" class="form-control"
+th:value="${pc.idPc}" />
+</div>
+ <div class="form-group">
+<label class="control-label">Nom Pc :</label>
+<input type="text" name="nomPc" class="form-control" th:value="${pc.nomPc}" />
+<span th:errors= ${pc.nomPc} class="text-danger"> </span>
+ </div>
+ <div class="form-group">
+<label class="control-label">Prix  :</label>
+<input type="text" name="prix" class="form-control" th:value="${pc.prix}" />
+<span th:errors= ${pc.prix} class="text-danger"> </span>
+ </div>
+ <div class="form-group">
+ <label class="control-label">date Ajout :</label>
+<input type="date" name="dateAjout" class="form-control" th:value="${pc.dateAjout}"/>
+<span th:errors=${pc.dateAjout} class="text-danger">
+</span>
+ </div>
+ <div class="form-group">
+							<label class="control-label">Marque :</label> 
+						<select     name="marque" class="form-control" th:value="${pc.marque.idMar}"   th:if= "${!#strings.isEmpty(pc.marque)}" >
+								<option th:each="m:${marques}" th:if="${mode=='edit'}"
+									th:value="${m.idMar}" th:text="${m.nomMar}"
+									th:selected="${ m.idMar==pc.marque.idMar}"></option>
+
+								<option th:each="m:${marques}" th:if="${mode=='new'}"
+									th:value="${m.idMar}" th:text="${m.nomMar}"></option>
+								
+							</select>
+							
+						
+						<!-- Pour ne pas avoir d'erreurs si la catégorie est null on ajoute ce select -->
+						
+						
+
+						
+						<select name="marque" class="form-control" th:if= "${#strings.isEmpty(pc.marque)}" >
+								<option th:each="m:${marques}" th:value="${m.idMar}" th:text="${m.nomMar}"></option>
+							</select>
+							
+						</div>
+						<label class="control-label">page : </label>
+  <input type="text" name="page"  th:value="${page}"/>
+ <div>
+ <button type="submit" class="btn btn-primary">Valider</button>
+ </div>
+ </form>
+</div>
+ </div>
+ </div>
+ </div>
+</body>
+</html>
